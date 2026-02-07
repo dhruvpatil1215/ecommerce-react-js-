@@ -9,7 +9,7 @@ const DealSection = () => {
                         <span>HOT DEAL FURNITURE</span>
                         <h2>Furniture Limit Offer</h2>
                         <h1>30% Off</h1>
-                        <a href="#">BUY NOW ›</a>
+                     <a href="/shop">BUY NOW ›</a>
                     </div>
                 </div>
 
@@ -32,3 +32,4 @@ const DealSection = () => {
 };
 
 export default DealSection;
+
