@@ -15,17 +15,18 @@ const Header = () => {
                     <div className="dropdown">
                         <a href="#" className="drop-btn" tabIndex="0">Home</a>
                         <div className="dropdown-menu">
-                            <a href="#">Pharmacy Store</a>
-                            <a href="#">Furniture Store</a>
-                            <a href="#">Grocery Store</a>
-                        </div>
-                    </div>
+<a href="/pharmacy">Pharmacy Store</a>
+<a href="/furniture">Furniture Store</a>
+<a href="/grocery">Grocery Store</a>
+</div>
+</div>
 
-                    <a href="#">About</a>
-                    <a href="#">Shop</a>
-                    <a href="#">Pages</a>
-                    <a href="#">Blog</a>
-                    <a href="#">Contact</a>
+<a href="/about">About</a>
+<a href="/shop">Shop</a>
+<a href="/pages">Pages</a>
+<a href="/blog">Blog</a>
+<a href="/contact">Contact</a>
+
                 </nav>
 
                 <div className="nav-icons">
@@ -37,3 +38,4 @@ const Header = () => {
 };
 
 export default Header;
+
