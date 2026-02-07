@@ -17,24 +17,24 @@ const Footer = () => {
                         <span><i className="fab fa-instagram"></i></span>
                     </div>
                 </div>
+<div className="footer-col">
+  <h4>Services</h4>
+  <a href="/login">Log In</a>
+  <a href="/wishlist">Wishlist</a>
+  <a href="/return-policy">Return Policy</a>
+  <a href="/privacy-policy">Privacy Policy</a>
+  <a href="/faqs">Shopping FAQs</a>
+</div>
 
-                <div className="footer-col">
-                    <h4>Services</h4>
-                    <a href="#">Log In</a>
-                    <a href="#">Wishlist</a>
-                    <a href="#">Return Policy</a>
-                    <a href="#">Privacy Policy</a>
-                    <a href="#">Shopping FAQs</a>
-                </div>
+<div className="footer-col">
+  <h4>Company</h4>
+  <a href="/home">Home</a>
+  <a href="/about">About us</a>
+  <a href="/pages">Pages</a>
+  <a href="/blog">Blog</a>
+  <a href="/contact">Contact us</a>
+</div>
 
-                <div className="footer-col">
-                    <h4>Company</h4>
-                    <a href="#">Home</a>
-                    <a href="#">About us</a>
-                    <a href="#">Pages</a>
-                    <a href="#">Blog</a>
-                    <a href="#">Contact us</a>
-                </div>
 
                 <div className="footer-col contact">
                     <h4>Contact</h4>
@@ -60,3 +60,4 @@ const Footer = () => {
 };
 
 export default Footer;
+
