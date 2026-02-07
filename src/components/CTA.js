@@ -6,13 +6,13 @@ const CTA = () => {
             <div className="cta-card blue">
                 <h3>Exclusive offers for you</h3>
                 <p>Get weekly deals, valuable health information and more.</p>
-                <a href="#" className="cta-btn">SIGN UP →</a>
+                <a href="/" className="cta-btn">SIGN UP →</a>
             </div>
 
             <div className="cta-card green">
                 <h3>Join Our Community</h3>
                 <p>Get weekly deals, valuable health information and more.</p>
-                <a href="#" className="cta-btn">JOIN FREE NOW →</a>
+                <a href="/" className="cta-btn">JOIN FREE NOW →</a>
             </div>
 
             <div className="cta-card pink">
@@ -28,3 +28,4 @@ const CTA = () => {
 };
 
 export default CTA;
+
