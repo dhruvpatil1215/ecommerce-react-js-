@@ -9,10 +9,11 @@ const TrendyCollection = () => {
                     <h2>Trendy Collection</h2>
                 </div>
                 <div className="trendy-tabs">
-                    <a className="active" href="#">All Collection</a>
-                    <a href="#">New In</a>
-                    <a href="#">Top Rated</a>
-                    <a href="#">Tensing Items</a>
+<a className="active" href="/collection">All Collection</a>
+<a href="/new">New In</a>
+<a href="/top-rated">Top Rated</a>
+<a href="/trending">Tensing Items</a>
+
                 </div>
             </div>
 
@@ -142,3 +143,4 @@ const TrendyCollection = () => {
 };
 
 export default TrendyCollection;
+
