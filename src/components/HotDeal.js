@@ -8,7 +8,7 @@ const HotDeal = () => {
                     <div className="deal-box">
                         <span>HOT DEAL FURNITURE</span>
                         <h2>Live Furniture<br />Your Love</h2>
-                        <a href="#" className="deal-btn">BUY NOW ›</a>
+                    <a href="/shop">BUY NOW</a>
                     </div>
                 </div>
 
@@ -52,3 +52,4 @@ const HotDeal = () => {
 };
 
 export default HotDeal;
+
