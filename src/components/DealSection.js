@@ -23,7 +23,8 @@ const DealSection = () => {
                             <div><h3 id="mins">00</h3><p>MINS</p></div>
                             <div><h3 id="secs">00</h3><p>SECS</p></div>
                         </div>
-                        <a href="#">BUY NOW ›</a>
+                        <a href="/shop">BUY NOW ›</a>
+
                     </div>
                 </div>
             </div>
@@ -32,4 +33,5 @@ const DealSection = () => {
 };
 
 export default DealSection;
+
 
