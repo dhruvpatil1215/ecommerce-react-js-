@@ -13,7 +13,7 @@ const Header = () => {
 
                 <nav className="menu">
                     <div className="dropdown">
-                        <a href="#" className="drop-btn" tabIndex="0">Home</a>
+                        <a href="/" className="drop-btn" tabIndex="0">Home</a>
                         <div className="dropdown-menu">
 <a href="/pharmacy">Pharmacy Store</a>
 <a href="/furniture">Furniture Store</a>
@@ -38,4 +38,5 @@ const Header = () => {
 };
 
 export default Header;
+
 
