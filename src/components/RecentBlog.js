@@ -11,7 +11,7 @@ const RecentBlog = () => {
                         <span className="blog-cat">Chair Design</span>
                         <p className="blog-meta">By Alex Manie &nbsp;&nbsp; 07 jan, 2024</p>
                         <h3>Arrangement That's Nearly Perfect.</h3>
-                        <a href="#" className="blog-arrow">›</a>
+                      <a href="/blog" className="blog-arrow">›</a>
                     </div>
                     <div className="blog-img">
                         <img src="/assets/imgs/furniture/blog/blog-image1.jpg" alt="Blog" />
@@ -23,7 +23,7 @@ const RecentBlog = () => {
                         <span className="blog-cat">Sofa Design</span>
                         <p className="blog-meta">By Alex Manie &nbsp;&nbsp; 07 jan, 2024</p>
                         <h3>Eworkstation Arrangement That's</h3>
-                        <a href="#" className="blog-arrow">›</a>
+                     <a href="/blog" className="blog-arrow">›</a>
                     </div>
                     <div className="blog-img">
                         <img src="/assets/imgs/furniture/blog/blog-image2.jpg" alt="Blog" />
@@ -35,3 +35,4 @@ const RecentBlog = () => {
 };
 
 export default RecentBlog;
+
