@@ -49,8 +49,8 @@ const Footer = () => {
             <div className="footer-bottom">
                 <p>© All Copyright 2024 by Addina</p>
                 <div className="payments">
-                    <img src="/assets/imgs/payoneer.png" alt="Payoneer" />
-                    <img src="/assets/imgs/mastercard.png" alt="Mastercard" />
+                    <img src="/assets/imgs/furniture/about/payonner.png" alt="Payoneer" />
+                    <img src="/assets/imgs/furniture/about/mastercard.png" alt="Mastercard" />
                     <img src="/assets/imgs/paypal.png" alt="Paypal" />
                 </div>
                 <p>Terms & Condition | Privacy Policy</p>
