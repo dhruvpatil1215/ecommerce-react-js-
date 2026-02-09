@@ -56,9 +56,9 @@ const Header = () => {
                             <a href="/">Grocery Store</a>
                         </div>
                     </div>
-                    <a href="#">About</a>
+                    <a href="/">About</a>
                     <div className="dropdown">
-                        <a href="#" className="drop-btn" tabIndex="0">Shop</a>
+                        <a href="/" className="drop-btn" tabIndex="0">Shop</a>
                         <div className="dropdown-menu">
                             <a href="/">All Products</a>
                             <a href="/">New Arrivals</a>
@@ -111,3 +111,4 @@ const Header = () => {
 };
 
 export default Header;
+
