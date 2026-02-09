@@ -1,0 +1,891 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Details - Addina</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: #faf7f2;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* ================= TOP BAR ================= */
+        .top-bar {
+            background: #c19a6b;
+            color: #fff;
+            padding: 10px 40px;
+            display: flex;
+            justify-content: space-between;
+            font-size: 14px;
+        }
+
+        /* ================= NAVBAR ================= */
+        .navbar {
+            background: #fff;
+            padding: 0 40px;
+            /* Reduced vertical padding */
+            height: 90px;
+            /* Fixed height for stability */
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #eee;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 26px;
+            font-weight: 700;
+        }
+
+        .logo img {
+            max-height: 40px;
+        }
+
+        .menu {
+            display: flex;
+            gap: 25px;
+            height: 100%;
+            align-items: center;
+        }
+
+        .menu>a,
+        .drop-btn {
+            text-decoration: none;
+            color: #000;
+            font-weight: 500;
+            font-size: 15px;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            padding: 0 5px;
+            transition: 0.3s;
+        }
+
+        .menu a:hover,
+        .drop-btn:hover {
+            color: #c19a6b;
+        }
+
+        /* ================= DROPDOWN ================= */
+        .dropdown {
+            position: relative;
+            height: 100%;
+            display: flex;
+            align-items: center;
+        }
+
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            /* Align with bottom of navbar */
+            left: 0;
+            width: 220px;
+            background: #fff;
+            display: none;
+            flex-direction: column;
+            border: 1px solid #eee;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            z-index: 1001;
+            padding: 10px 0;
+        }
+
+        .dropdown-menu a {
+            padding: 12px 25px;
+            text-decoration: none;
+            color: #333;
+            font-size: 14px;
+            font-weight: 500;
+            transition: 0.3s;
+        }
+
+        .dropdown-menu a:hover {
+            background: #fdfaf5;
+            color: #c19a6b;
+            padding-left: 30px;
+        }
+
+        .dropdown:hover .dropdown-menu {
+            display: flex;
+        }
+
+        .nav-icons {
+            display: flex;
+            gap: 15px;
+            font-size: 18px;
+            align-items: center;
+        }
+
+        .nav-icons i {
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .nav-icons i:hover {
+            color: #c19a6b;
+        }
+
+        .hamburger {
+            cursor: pointer;
+            font-size: 22px;
+            margin-left: 10px;
+        }
+
+        /* ================= PRODUCT DETAILS ================= */
+
+        .product-details {
+            padding-bottom: 80px;
+        }
+
+        .product-details-header {
+            background: #fdfaf5;
+            padding: 60px 0;
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        .product-details-header h1 {
+            font-size: 40px;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .breadcrumb {
+            font-size: 14px;
+        }
+
+        .breadcrumb a {
+            text-decoration: none;
+            color: #333;
+        }
+
+        .breadcrumb span {
+            margin: 0 8px;
+            color: #666;
+        }
+
+        .product-details-content {
+            display: flex;
+            gap: 50px;
+            align-items: flex-start;
+        }
+
+        /* Images */
+        .product-images {
+            flex: 1;
+            display: flex;
+            gap: 20px;
+        }
+
+        .thumbnail-list {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .thumb-item {
+            width: 80px;
+            height: 80px;
+            border: 1px solid #eee;
+            padding: 10px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #fdfaf5;
+            transition: 0.3s;
+        }
+
+        .thumb-item:hover {
+            border-color: #c19a6b;
+        }
+
+        .thumb-item.active {
+            border-color: #c19a6b;
+        }
+
+        .thumb-item img {
+            max-width: 100%;
+        }
+
+        .main-image {
+            flex: 1;
+            background: #fdfaf5;
+            padding: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 450px;
+        }
+
+        .main-image img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        /* Info */
+        .product-info {
+            flex: 1;
+        }
+
+        .category-tag {
+            background: #ff7e41;
+            color: #fff;
+            padding: 4px 12px;
+            font-size: 12px;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 15px;
+            border-radius: 2px;
+        }
+
+        .rating-row {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .rating-row .stars {
+            color: #f4b400;
+            font-size: 14px;
+        }
+
+        .reviews-count {
+            color: #666;
+            font-size: 14px;
+        }
+
+        .product-title {
+            font-size: 32px;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .price-row {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .old-price {
+            text-decoration: line-through;
+            color: #ccc;
+            font-size: 20px;
+        }
+
+        .current-price {
+            color: #c19a6b;
+            font-size: 28px;
+            font-weight: 700;
+        }
+
+        .product-description {
+            color: #666;
+            line-height: 1.8;
+            margin-bottom: 35px;
+            font-size: 15px;
+        }
+
+        /* Actions */
+        .cart-actions {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .quantity-selector {
+            display: flex;
+            border: 1px solid #eee;
+            border-radius: 30px;
+            overflow: hidden;
+            height: 50px;
+            background: #fff;
+        }
+
+        .quantity-selector button {
+            background: transparent;
+            border: none;
+            width: 40px;
+            font-size: 20px;
+            cursor: pointer;
+            color: #666;
+            transition: 0.3s;
+        }
+
+        .quantity-selector button:hover {
+            color: #c19a6b;
+        }
+
+        .quantity-selector input {
+            width: 40px;
+            border: none;
+            text-align: center;
+            font-weight: 600;
+            color: #333;
+            outline: none;
+        }
+
+        .add-to-cart-btn {
+            background: #c19a6b;
+            color: #fff;
+            border: none;
+            padding: 0 35px;
+            height: 50px;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 14px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: 0.3s;
+        }
+
+        .add-to-cart-btn:hover {
+            background: #a68155;
+            transform: translateY(-2px);
+        }
+
+        .wishlist-btn {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: 1px solid #eee;
+            background: #fff;
+            color: #ccc;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 18px;
+            transition: 0.3s;
+        }
+
+        .wishlist-btn:hover {
+            border-color: #c19a6b;
+            color: #c19a6b;
+            transform: scale(1.1);
+        }
+
+        /* ================= TABS SECTION ================= */
+        .tabs-section {
+            padding: 80px 0;
+            background: #fff;
+        }
+
+        .tabs-wrapper {
+            display: flex;
+            gap: 60px;
+        }
+
+        .tabs-nav {
+            width: 300px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .tab-btn {
+            padding: 15px 25px;
+            background: transparent;
+            border: 1px solid #eee;
+            text-align: left;
+            font-weight: 600;
+            font-size: 14px;
+            cursor: pointer;
+            color: #333;
+            transition: 0.3s;
+            text-transform: uppercase;
+        }
+
+        .tab-btn.active {
+            background: #c19a6b;
+            color: #fff;
+            border-color: #c19a6b;
+        }
+
+        .tab-content {
+            flex: 1;
+        }
+
+        .tab-pane {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .tab-pane.active {
+            display: block;
+        }
+
+        .tab-pane p {
+            color: #666;
+            line-height: 1.8;
+            margin-bottom: 25px;
+            font-size: 15px;
+        }
+
+        /* ================= FOOTER ================= */
+        .site-footer {
+            background: #1a1a1a;
+            color: #fff;
+            padding: 80px 0 30px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr 1.5fr;
+            gap: 60px;
+            margin-bottom: 60px;
+        }
+
+        .footer-col h4 {
+            font-size: 20px;
+            margin-bottom: 30px;
+            color: #fff;
+        }
+
+        .footer-logo {
+            margin-bottom: 25px;
+            font-size: 24px;
+            font-weight: 700;
+        }
+
+        .footer-about p {
+            color: #999;
+            line-height: 1.8;
+            margin-bottom: 25px;
+            font-size: 14px;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-icons i {
+            width: 40px;
+            height: 40px;
+            background: #fff;
+            color: #1a1a1a;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 16px;
+            transition: 0.3s;
+        }
+
+        .social-icons i:hover {
+            background: #c19a6b;
+            color: #fff;
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 15px;
+        }
+
+        .footer-col ul li a {
+            color: #999;
+            text-decoration: none;
+            font-size: 15px;
+            transition: 0.3s;
+        }
+
+        .footer-col ul li a:hover {
+            color: #c19a6b;
+            padding-left: 5px;
+        }
+
+        .contact-item {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .contact-icon {
+            width: 45px;
+            height: 45px;
+            background: #c19a6b;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            color: #fff;
+            font-size: 18px;
+        }
+
+        .contact-info p {
+            color: #999;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        .contact-info .label {
+            color: #ccc;
+            font-weight: 600;
+            margin-bottom: 4px;
+            display: block;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #333;
+            padding-top: 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .back-to-top {
+            width: 45px;
+            height: 45px;
+            background: #fff;
+            color: #1a1a1a;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .back-to-top:hover {
+            background: #c19a6b;
+            color: #fff;
+        }
+
+        @media (max-width: 900px) {
+            .navbar {
+                height: 70px;
+                padding: 0 20px;
+            }
+
+            .navbar .menu {
+                display: none;
+            }
+
+            .product-details-content {
+                flex-direction: column;
+            }
+
+            .product-images {
+                width: 100%;
+                flex-direction: column-reverse;
+            }
+
+            .thumbnail-list {
+                flex-direction: row;
+                justify-content: center;
+            }
+
+            .product-info {
+                width: 100%;
+            }
+
+            .tabs-wrapper {
+                flex-direction: column;
+            }
+
+            .tabs-nav {
+                width: 100%;
+            }
+
+            .footer-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 600px) {
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="top-bar">
+        <span>📞 +380961381876</span>
+        <span>TAKE CARE OF YOUR Health 25% OFF USE CODE <b>DOFIX03</b></span>
+    </div>
+
+    <header class="navbar">
+        <div class="logo"><a href="index.html"><img src="/assets/imgs/furniture/logo/logo.svg" alt="logo"></a></div>
+
+        <nav class="menu">
+            <div class="dropdown">
+                <a href="index.html" class="drop-btn">Home</a>
+                <div class="dropdown-menu">
+                    <a href="#">Pharmacy Store</a>
+                    <a href="index.html">Furniture Store</a>
+                    <a href="#">Grocery Store</a>
+                </div>
+            </div>
+            <a href="#">About</a>
+            <a href="#">Shop</a>
+            <a href="#">Pages</a>
+            <a href="#">Blog</a>
+            <a href="#">Contact</a>
+        </nav>
+
+        <div class="nav-icons">
+            <i class="fas fa-search"></i>
+            <i class="far fa-heart"></i>
+            <i class="fas fa-shopping-basket"></i>
+            <span class="hamburger">☰</span>
+        </div>
+    </header>
+
+    <section class="product-details">
+        <!-- Page Header / Breadcrumb Section -->
+        <div class="product-details-header">
+            <div class="container">
+                <h1>Alexander Roll Arm Sofa</h1>
+                <nav class="breadcrumb">
+                    <a href="index.html">Home</a> <span>•</span> <span>Product Details</span>
+                </nav>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="product-details-content">
+                <!-- Left: Product Images -->
+                <div class="product-images">
+                    <div class="thumbnail-list">
+                        <div class="thumb-item active">
+                            <img src="https://i.ibb.co/LzfNq3H/sofa-1.png" alt="thumbnail">
+                        </div>
+                        <div class="thumb-item">
+                            <img src="https://i.ibb.co/LzfNq3H/sofa-1.png" alt="thumbnail">
+                        </div>
+                        <div class="thumb-item">
+                            <img src="https://i.ibb.co/LzfNq3H/sofa-1.png" alt="thumbnail">
+                        </div>
+                    </div>
+                    <div class="main-image">
+                        <img src="https://i.ibb.co/LzfNq3H/sofa-1.png" alt="Alexander Roll Arm Sofa">
+                    </div>
+                </div>
+
+                <!-- Right: Product Info -->
+                <div class="product-info">
+                    <span class="category-tag">CONSTRUCTION</span>
+                    <div class="rating-row">
+                        <div class="stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="far fa-star"></i>
+                            <i class="far fa-star"></i>
+                        </div>
+                        <span class="reviews-count">10 Reviews</span>
+                    </div>
+                    <h2 class="product-title">Alexander Roll Arm Sofa</h2>
+                    <div class="price-row">
+                        <span class="old-price">$30.35</span>
+                        <span class="current-price">$19.25</span>
+                    </div>
+                    <p class="product-description">
+                        Priyoshop has brought to you the Hijab 3 Pieces Combo Pack PS23. It
+                        is a completely modern design and you feel comfortable to put on
+                        this hijab. Buy it at the best price.
+                    </p>
+
+                    <div class="cart-actions">
+                        <div class="quantity-selector">
+                            <button id="decrease-qty">-</button>
+                            <input type="text" id="qty-input" value="1" readonly>
+                            <button id="increase-qty">+</button>
+                        </div>
+                        <button class="add-to-cart-btn">
+                            ADD TO CART <i class="fas fa-shopping-basket"></i>
+                        </button>
+                        <button class="wishlist-btn">
+                            <i class="far fa-heart"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tabs Section -->
+    <section class="tabs-section">
+        <div class="container">
+            <div class="tabs-wrapper">
+                <div class="tabs-nav">
+                    <button class="tab-btn active" data-tab="desc">Description</button>
+                    <button class="tab-btn" data-tab="info">Additional Information</button>
+                    <button class="tab-btn" data-tab="reviews">Reviews (3)</button>
+                </div>
+                <div class="tab-content">
+                    <div class="tab-pane active" id="desc">
+                        <p>In marketing a product is an object or system made available for consumer use it is anything
+                            that can be offered to a market to the desire or need of a retailing, products are often
+                            referred to as merchandise, and in manufacturing, products are bought as materials and then
+                            sold as finished goods. A service regarded to as a type of product. Commodities are usually
+                            raw materials metals and agricultural products, but a commodity can also be anything wide
+                            the open market. In project management, the formal definition of the project deliverables
+                        </p>
+                        <p>A product can be classified as tangible or intangible. A tangible product is a physical
+                            object that can be perceived by touch building, vehicle, gadget, An intangible product is a
+                            product that can only be perceived indirectly such as an insurance policy. can be broadly
+                            classified under intangible be durable or non durable. A product line is a group of products
+                            that are closely either because they function in a similar manner, are sold to the same
+                            customergroups.</p>
+                    </div>
+                    <div class="tab-pane" id="info">
+                        <p>Additional information about the product material, dimensions, and weight goes here.</p>
+                    </div>
+                    <div class="tab-pane" id="reviews">
+                        <p>Customer reviews will be displayed here.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col footer-about">
+                    <div class="footer-logo">
+                        <img src="/assets/imgs/furniture/logo/logo.svg" alt="logo"
+                            style="filter: brightness(0) invert(1);">
+                    </div>
+                    <p>It helps designers plan out where the content will sit, the content to be written and approved.
+                    </p>
+                    <div class="social-icons">
+                        <i class="fab fa-facebook-f"></i>
+                        <i class="fab fa-twitter"></i>
+                        <i class="fab fa-linkedin-in"></i>
+                        <i class="fab fa-instagram"></i>
+                    </div>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="#">Log In</a></li>
+                        <li><a href="#">Wishlist</a></li>
+                        <li><a href="#">Return Policy</a></li>
+                        <li><a href="#">Privacy policy</a></li>
+                        <li><a href="#">Shopping FAQs</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="#">About us</a></li>
+                        <li><a href="#">Pages</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Contact us</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Contact</h4>
+                    <div class="contact-item">
+                        <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
+                        <div class="contact-info">
+                            <p>4517 Washington Ave. Manchester, Kentucky 39495</p>
+                            <p>711-2880 Nulla St.</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon"><i class="fas fa-phone-alt"></i></div>
+                        <div class="contact-info">
+                            <p>+964 742 44 763</p>
+                            <p>Mon - Sat: 9 AM - 5 PM</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2026 Addina. All Rights Reserved.</p>
+                <div class="back-to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+                    <i class="fas fa-arrow-up"></i>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Quantity Logic
+        const qtyInput = document.getElementById('qty-input');
+        const increaseBtn = document.getElementById('increase-qty');
+        const decreaseBtn = document.getElementById('decrease-qty');
+
+        increaseBtn.addEventListener('click', () => {
+            qtyInput.value = parseInt(qtyInput.value) + 1;
+        });
+
+        decreaseBtn.addEventListener('click', () => {
+            const currentVal = parseInt(qtyInput.value);
+            if (currentVal > 1) {
+                qtyInput.value = currentVal - 1;
+            }
+        });
+
+        // Tabs Logic
+        const tabBtns = document.querySelectorAll('.tab-btn');
+        const tabPanes = document.querySelectorAll('.tab-pane');
+
+        tabBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const target = btn.getAttribute('data-tab');
+
+                tabBtns.forEach(b => b.classList.remove('active'));
+                tabPanes.forEach(p => p.classList.remove('active'));
+
+                btn.classList.add('active');
+                document.getElementById(target).classList.add('active');
+            });
+        });
+    </script>
+</body>
+
+</html>
