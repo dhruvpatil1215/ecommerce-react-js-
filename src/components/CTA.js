@@ -20,7 +20,7 @@ const CTA = () => {
                 <p>Get weekly deals, valuable health information and more.</p>
                 <div className="store-buttons">
                     <img src="https://png.pngtree.com/png-clipart/20230916/original/pngtree-google-play-app-icon-vector-png-image_12256664.png" alt="Google Play" />
-                    <img src="https://png.pngtree.com/png-vector/20221018/ourmid/pngtree-app-store-logo-png-image_6315845.png" alt="App Store" />
+                    <img src="/assets/imgs/furniture/about/image.png" alt="App Store" />
                 </div>
             </div>
         </section>
